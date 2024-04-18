@@ -1,31 +1,30 @@
+from flask import Flask, request, jsonify, render_template
 import pickle
-from flask import Flask, render_template, request, jsonify
-import pandas as pd
-import numpy as np
+
+
+# Loading trained model 
+model = pickle.load(open('best_model_object.pkl', 'rb'))
+
+# Loading pipeline
+model = pickle.load(open('pipeline.pkl', 'rb'))
 
 app = Flask(__name__)
 
-pipeline = pickle.load(open('pickled files\pipeline.pkl', 'rb'))
-model = pickle.load(open('pickled files\best_model_object.pkl', 'rb'))
-
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return render_template('home.html')
 
-@app.route('/predict_api', methods=['POST'])
-
+@app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json['data']
+
+    # Get data from Post request
+    data = request.get_json()
     print(data)
-    
-    new_data = np.array(list(data.values()).reshape(1,-1)
-
-    scaled_data = pipeline.transform(new_data)
-
-    output = model.predict(scaled_data)
-    print(output)
-
-    return jsonify(output[0])
+    # Assuming data is a list of lists for a model expecting multiple inputs
+    predictions = model.predict(data)
+    print(predictions[0])
+    # Convert predictions to a list (if they're not already) and send back
+    return jsonify(predictions.tolist())
 
 if __name__ == '__main__':
-    app.run(debug=True)    
+    app.run(debug=True)

@@ -2,10 +2,141 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adult Income</title>
+    <title>Input Form for ML Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Creates two columns of equal width */
+            grid-gap: 20px; /* Space between rows and columns */
+        }
+        label {
+            display: block;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            grid-column: span 2; /* Make the button span across both columns */
+            width: 50%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            justify-self: center;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Asslamu alaikum</h1>
+    <h2>Adult Census Income Prediction</h2>
+    <form action="/predict" method="post">
+        <div>
+            <label for="age" placeholder="Between 17 to 90" min="17" max="90">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div>
+            <label for="workclass">Workclass:</label>
+            <select id="workclass" name="workclass" required>
+                <option value="Private">Private</option>
+                <option value="Government">Government</option>
+                <option value="Self-emp">Self Employed</option>
+                <option value="Without-pay">Without-pay</option>
+            </select>
+
+        </div>
+        <div>
+            <label for="fnlwgt">Final Weight:</label>
+            <input type="number" id="fnlwgt" name="fnlwgt" placeholder="Between 10000 to 900000" min="10000" max="900000" required>
+        </div>
+        <div>
+            <label for="education_num">Education Number:</label>
+            <input type="number" id="education_num" name="education.num" placeholder="Between 1 to 16" min="1" max="16" required>
+        </div>
+        <div>
+            <label for="marital_status">Marital Status:</label>
+            <select id="marital_status" name="marital.status" required>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+            </select>
+        </div>
+        <div>
+            <label for="occupation">Occupation:</label>
+            <select id="occupation" name="occupation" required>
+                <option value="Prof-specialty">Prof-specialty</option>
+                <option value="Craft-repair ">Craft-repair </option>
+                <option value="Self-emp">Exec-managerial</option>
+                <option value="Adm-clerical">Adm-clerical</option>
+                <option value="Sales">Sales</option>
+                <option value="Other-service">Other-service</option>
+                <option value="Machine-op-inspct">Machine-op-inspct</option>
+                <option value="Transport-moving">Transport-moving</option>
+                <option value="Handlers-cleaners">Handlers-cleaners</option>
+                <option value="Farming-fishing">Farming-fishing</option>
+                <option value="Tech-support ">Tech-support </option>
+                <option value="Protective-serv">Protective-serv</option>
+                <option value="Priv-house-serv">Priv-house-serv</option>
+                <option value="Armed-Forces">Armed-Forces</option>
+            </select>
+        </div>
+        <div>
+            <label for="relationship">Relationship:</label>
+            <select id="relationship" name="relationship" required>
+                <option value="Husband">Husband</option>
+                <option value="Wife">Wife</option>
+                <option value="Own-child">Own-child</option>
+                <option value="Unmarried">Unmarried</option>
+                <option value="Other-relative">Other</option>
+                <option value="Not-in-family">Not-in-family</option>
+                
+            </select>
+        </div>
+        <div>
+            <label for="race">Race:</label>
+            <select id="race" name="race" required>
+                <option value="White">White</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div>
+            <label for="hours_per_week">Hours per Week:</label>
+            <input type="number" id="hours_per_week" name="hours.per.week" required>
+        </div>
+        <div>
+            <label for="native_country">Native Country:</label>
+            <select id="native_country" name="native_country" required>
+                <option value="United States">United States</option>
+                <option value="Other">Other country</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
