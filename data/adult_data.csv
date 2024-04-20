@@ -1,4 +1,4 @@
-age,workclass,fnlwgt,education.num,marital.status,occupation,relationship,race,sex,hours.per.week,native.country,income
+age,workclass,fnlwgt,education_num,marital_status,occupation,relationship,race,sex,hours_per_week,Country,income
 82,Private,132870,9,Single,Exec-managerial,Not-in-family,White,Female,18,United-States,0
 54,Private,140359,4,Single,Machine-op-inspct,Unmarried,White,Female,40,United-States,0
 41,Private,264663,10,Single,Prof-specialty,Own-child,White,Female,40,United-States,0
