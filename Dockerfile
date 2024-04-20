@@ -1,6 +1,6 @@
-FROM python:3.7 
-COPY . /app
+FROM python:3.7-slim
 WORKDIR /app
+COPY . /app
 RUN pip install -r requirements.txt
-EXPOSE $PORT
-CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
+EXPOSE 5000
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]
